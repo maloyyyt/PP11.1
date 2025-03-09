@@ -31,6 +31,7 @@ def get_date(date_str):
     except ValueError:
         raise ValueError("Неверный формат даты")
 
+
 if __name__ == "__main__":
     card_info = input("enter card number:")
     account_info = input("enter account number:")
