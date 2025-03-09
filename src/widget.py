@@ -1,14 +1,23 @@
-from src.masks import get_mask_card_number,get_mask_account
+from src.masks import get_mask_card_number, get_mask_account
 
 
 def mask_account_card(card_info):
     """
     Принимает на вход строку формата "Visa Platinum 7000792289606361" и "Счет 73654108430135874305"
     """
+    if not isinstance(card_info, str):
+        raise TypeError("Номер карты или счета должен быть строкой")
+
+    if not card_info:
+        raise ValueError("Номер карты или счета не может быть пустым")
+
     if "Счет" in card_info:
         return get_mask_account(card_info)
     else:
-        return get_mask_card_number(card_info)
+        try:
+            return get_mask_card_number(card_info)
+        except ValueError as e:
+            raise ValueError(str(e))
 
 
 def get_date(date_str):

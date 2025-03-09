@@ -17,6 +17,6 @@ def get_mask_account(account_info):
     parts = account_info.split()
     account_number = parts[-1]
     if len(account_number) < 6:
-        raise ValueError("Номeр счета должен содержать не менее 6 цифр.")
+        raise ValueError("Номер счета должен содержать не менее 6 цифр.")
     masked_number = f"**{account_number[-4:]}"
-    return ' '.join(parts[:-1]) + ' ' + masked_number
+    return ' '.join(parts[:-1]) + masked_number
