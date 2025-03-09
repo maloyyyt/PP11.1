@@ -1,9 +1,8 @@
 from typing import Dict, Iterator, List
 
+
 def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict]:
-    """
-    Принимает на вход список словарей, представляющих транзакции
-    """
+    """Принимает на вход список словарей, представляющих транзакции"""
     return (
         transaction
         for transaction in transactions
@@ -12,17 +11,13 @@ def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict
 
 
 def transaction_descriptions(transactions: List[Dict]) -> Iterator[str]:
-    """
-    Принимает список словарей с транзакциями и возвращает описание каждой операции по очереди
-    """
+    """Принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
     for transaction in transactions:
         yield transaction['description']
 
 
 def card_number_generator(start: int, stop: int) -> Iterator[str]:
-    """
-    Выдает номера банковских карт в формате XXXX XXXX XXXX XXXX
-    """
+    """Выдает номера банковских карт в формате XXXX XXXX XXXX XXXX"""
     for number in range(start, stop + 1):
         yield (
             f"{number:016}"[:4] + " " + f"{number:016}"[4:8] + " " + f"{number:016}"[8:12] + " " + f"{number:016}"[12:]
